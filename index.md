@@ -49,7 +49,7 @@ name: Python CI
 name: Deno CI
 ```
 ```yaml
-name: GH Pages CI
+name: GH Pages Deploy
 ```
 ```yaml
 name: Release
@@ -59,6 +59,8 @@ name: Release
 ## Triggers
 
 For more options such as building on schedule, see my [Triggers](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/triggers.html) cheatsheet.
+
+You can combine the sections below - for example, you can run a task on pushes `main`, on a nightly schedule and also whenever you press the run button (without having to make a commit).
 
 ### On a commit push
 
@@ -107,14 +109,26 @@ Create a tag or a release to trigger your workflow.
           - 'v*'
     ```
 
-### Manual
+### On manual button press
 
-Allows you to run this workflow manually from the Actions tab
+Allows you to run this workflow manually from the Actions tab.
 
 ```yaml
 on:
   workflow_dispatch:
 ```
+
+### On a schedule
+
+Run on given cron frequency. Here, daily at midnight.
+
+```yaml
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+```
+
+This is useful for building a site, deploying an application or publishing to a package registry. Also, if you have any code quality or security scans such as a [CodeQL](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/codeql-analysis.yml) workflow.
 
 
 ## Operating systems
@@ -383,9 +397,13 @@ Sequence:
 Note the use of the `if` condition on this step. This means that your entire workflow can run on a push to your main branch. But on a push to a Pull Request branch, the earlier build steps will run but the deploy step at the end will be skipped. This is useful to avoid deploy your work in progress branch to your production site.
 
 
-## Future development
+## Workflows out in the world
 
-After some more content, I'll add interactivity - like using React to control a form and YAML output.
+Here are some workflows I have setup for my projects.
+
+- [GH Pages Deploy](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/main.yml) - workflow to build, test and a deploy a Vue app on GH Pages.
+- [GH Pages Deploy](https://github.com/MichaelCurrin/react-quickstart/blob/master/.github/workflows/main.yml) - same as above but for React.
+
 
 
 {% endraw %}
