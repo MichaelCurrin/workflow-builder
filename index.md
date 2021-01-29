@@ -20,7 +20,8 @@ If you want to know available options for a workflow and if you YAML syntax is v
 ## Resources
 
 - I wrote two blog posts on GH Actions.
-    - [Beginners guide to GH Actions](https://dev.to/michaelcurrin/beginner-s-guide-to-github-actions-49aa).
+    - [Beginners guide to GH Actions](https://dev.to/michaelcurrin/beginner-s-guide-to-github-actions-49aa) - overview of features without code snippets.
+    - [CI pipeline guide](https://dev.to/michaelcurrin/intro-tutorial-to-ci-cd-with-github-actions-2ba8) - covering Hello World and then a Node app in GH Actions.
 - To learn about GH Actions from GitHub's docs, see links in my [Resources](https://michaelcurrin.github.io/dev-resources/resources/ci-cd/github-actions/) list.
 - To understand the workflow syntax with some practical examples, see [GitHub Actions](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/) in my Dev Cheatsheets.
 
