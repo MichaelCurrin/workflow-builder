@@ -19,6 +19,39 @@ To learn about GH Actions from GitHub's docs, see these [Resources](https://mich
 If you want to know available options for a workflow and if you YAML syntax is valid, edit your workflow on GitHub rather than in a local file. Click on a field or at an indent level where you want to add a field, the press <kbd>CTRL</kbd>+<kbd>SPACE</kbd>. You'll see available options for that context. This can save reading through the docs.
 
 
+## Name
+
+Example names for your workflow:
+
+```yaml
+name: CI
+```
+```yaml
+name: CI Build
+```
+```yaml
+name: CI Test
+```
+```yaml
+name: Node CI
+```
+```yaml
+name: Deno CI
+```
+```yaml
+name: Python CI
+```
+```yaml
+name: Deno CI
+```
+```yaml
+name: GH Pages CI
+```
+```yaml
+name: Release
+```
+
+
 ## Triggers
 
 For more options such as building on schedule, see my [Triggers](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/triggers.html) cheatsheet.
@@ -313,6 +346,20 @@ steps:
     run: |
       bundle config set path vendor/bundle
       bundle install --jobs 4 --retry 3
+```
+
+
+## GitHub Pages
+
+For more info and actions related, see [GH Pages](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deploy-gh-pages/) in my Code Cookbook.
+
+```yaml
+- name: Deploy 🚀
+  uses: peaceiris/actions-gh-pages@v3
+
+  with:
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+      publish_dir: public
 ```
 
 
