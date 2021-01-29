@@ -120,7 +120,7 @@ Run on Ubuntu.
 ```yaml
 jobs:
   build:
-    name: My job title
+    name: Your job name
 
     runs-on: ubuntu-latest
 ```
@@ -151,7 +151,7 @@ That covers:
 
 ### Checkout
 
-Using the [checkout](https://github.com/denolib/setup-deno) actions.
+Using the [checkout](https://github.com/actions/checkout) action.
 
 ```yaml
 steps:
@@ -159,13 +159,6 @@ steps:
     uses: actions/checkout@v2
 ```
 
-```yaml
-steps:
-  - name: Checkout 🛎️
-    uses: actions/checkout@v2
-    with:
-      persist-credentials: false
-```
 
 ### Setup environment
 
@@ -240,7 +233,7 @@ steps:
   - name: Setup Python
     uses: actions/setup-python@v2
     with:
-      python-version: '3.x'
+      python-version: 3.x
 ```
 
 #### Ruby
@@ -251,8 +244,22 @@ Using the [setup-ruby](https://github.com/actions/setup-ruby) action.
 steps:
   - uses: actions/setup-ruby@v1
     with:
-      ruby-version: '2.7'
+      ruby-version: 2.7
 ```
+
+#### Jekyll
+
+```yaml
+steps:
+  - name: Build Jekyll site
+    run: |
+      docker run \
+        -v $:/srv/jekyll \
+        -v $/_site:/srv/jekyll/_site \
+        jekyll/builder:4 \
+        /bin/bash -c 'chmod 777 /srv/jekyll && jekyll build --future'
+```
+
 
 ### Install dependencies
 
@@ -355,8 +362,8 @@ For more info and actions related, see [GH Pages](https://michaelcurrin.github.i
 
 ```yaml
 - name: Deploy 🚀
+  if: ${{ github.event_name != 'pull_request' }}
   uses: peaceiris/actions-gh-pages@v3
-
   with:
     github_token: ${{ secrets.GITHUB_TOKEN }}
       publish_dir: public
