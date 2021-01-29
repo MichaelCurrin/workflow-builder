@@ -100,7 +100,7 @@ Create a tag or a release to trigger your workflow.
     on:
     push:
         tags:
-        - 'v*'
+          - 'v*'
     ```
 
 ### Manual
