@@ -19,6 +19,8 @@ If you want to know available options for a workflow and if you YAML syntax is v
 
 ## Resources
 
+- I wrote two blog posts on GH Actions.
+    - [Beginners guide to GH Actions](https://dev.to/michaelcurrin/beginner-s-guide-to-github-actions-49aa).
 - To learn about GH Actions from GitHub's docs, see links in my [Resources](https://michaelcurrin.github.io/dev-resources/resources/ci-cd/github-actions/) list.
 - To understand the workflow syntax with some practical examples, see [GitHub Actions](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/) in my Dev Cheatsheets.
 
