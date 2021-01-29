@@ -358,11 +358,6 @@ steps:
 
 ## GitHub Pages
 
-1. To deploy your application, first run the build command for Jekyll or your Node app (e.g. React, Vue or Next.js).
-2. Then setup this action to point to that directory e.g. in `_site` or `build`.
-3. The action will copy the content root of the `gh-pages` branch (this it is default behavior).
-4. When that commit is pushed, then your GH Pages site will reload, using the latest content.
-
 For more info and related workflows and actions, see [GH Pages](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deploy-gh-pages/) in my Code Cookbook.
 
 ```yaml
@@ -373,6 +368,15 @@ For more info and related workflows and actions, see [GH Pages](https://michaelc
     github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: _site
 ```
+
+Sequence:
+
+1. To deploy your application, first run the build command for Jekyll or your Node app (e.g. React, Vue or Next.js).
+2. Then setup this action to point to that directory e.g. in `_site` or `build`.
+3. The action will copy the content root of the `gh-pages` branch (this it is default behavior).
+4. When that commit is pushed, then your GH Pages site will reload, using the latest content.
+
+Note the use of the `if` condition on this step. This means that your entire workflow can run on a push to your main branch. But on a push to a Pull Request branch, the earlier build steps will run but the deploy step at the end will be skipped. This is useful to avoid deploy your work in progress branch to your production site.
 
 
 ## Future development
