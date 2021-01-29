@@ -1,4 +1,4 @@
-# GH Actions Workflow Builder
+## GH Actions Workflow Builder
 > The quick and easy way to design a GitHub Actions workflow
 
 {% raw %}
@@ -68,5 +68,12 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
       runs-on: ${{ matrix.os }}
 ```
+
+
+## Steps
+
+See [Workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/) in my Code Cookbook.
+
+That covers GH Actions recipes for languages like Python, Ruby, Node, Deno and Go. Plus how to do tasks like build to GH Pages, build a Jekyll site or build and release assets.
 
 {% endraw %}
