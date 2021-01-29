@@ -1,4 +1,4 @@
-## GH Actions Workflow Builder
+# **GH Actions Workflow Builder**
 > The quick and easy way to design a GitHub Actions workflow
 
 {% raw %}
@@ -25,6 +25,8 @@ For more options such as building on schedule, see my [Triggers](https://michael
 
 ### On pushes
 
+Commit and push to your main branch or on a Pull Request branch to trigger your workflow.
+
 - `main.yml`
     ```yaml
     on:
@@ -39,6 +41,8 @@ For more options such as building on schedule, see my [Triggers](https://michael
     ```
 
 ### On a tag or release
+
+Create a tag or a release to trigger your workflow.
 
 - `release.yml`
     ```yaml
@@ -55,7 +59,7 @@ For more options such as building on schedule, see my [Triggers](https://michael
     ```
 
 
-## Operating system
+## Operating systems
 
 Run on Ubuntu.
 
@@ -83,15 +87,85 @@ jobs:
 
 This section covers some common snippets across languages, for some of my common build, test and deploy flows.
 
-TODO: I'll add some snippets here soon.
-
-For more details, please explore the [Workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/) section in my Code Cookbook. 
+For more details, please explore the [Workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/) section in my Code Cookbook.
 
 That covers:
 
 - Recipes for languages like Python, Ruby, Node, Deno and Go.
-- How to choose and configure Actions from the Marketplace. 
+- How to choose and configure Actions from the Marketplace.
 - Plus how to do tasks like cache assets, build any app to GH Pages (e.g. React, Vue, Next, MkDocs), build a Jekyll 4 site or to build and release assets.
+
+### Checkout
+
+```yaml
+steps:
+  - uses: actions/checkout@v2
+```
+
+### Language-specific steps
+
+#### Deno
+
+[Deno CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deno/).
+
+```yaml
+steps:
+  - uses: denolib/setup-deno@v2
+    with:
+    deno-version: v1.x
+```
+
+#### Go
+
+[Go CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/go/).
+
+```yaml
+steps:
+  - name: Set up Go
+    uses: actions/setup-go@v2
+    with:
+      go-version: 1.15
+```
+
+#### Python
+
+[Python CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/python/install-deps.html).
+
+```yaml
+steps:
+  - name: Setup Python
+    uses: actions/setup-python@v2
+    with:
+      python-version: '3.x'
+```
+
+### Install dependencies
+
+This section is not needed for Go or Deno where packages are installed on running, building, testing, etc.
+
+See GH Actions [Cache](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/cache.html) guide.
+
+#### Python
+
+```yaml
+steps:
+  - name: Cache dependencies
+    uses: actions/cache@v2
+    with:
+      path: ~/.cache/pip
+      key: ${{ runner.os }}-pip-${{ hashFiles('docs/requirements.txt') }}
+      restore-keys: |
+        ${{ runner.os }}-pip-
+        ${{ runner.os }}-
+```
+
+```yaml
+steps:
+  - name: Install dependencies
+    run: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+```
 
 
 ## Future development
