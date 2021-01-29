@@ -4,6 +4,8 @@
 [![GitHub tag](https://img.shields.io/github/tag/MichaelCurrin/workflow-builder?include_prereleases=&sort=semver)](https://github.com/MichaelCurrin/workflow-builder/releases/)
 [![License - MIT](https://img.shields.io/badge/License-MIT-blue)](#license)
 
+[![Made for - GitHub Actions](https://img.shields.io/badge/Made_for-GitHub_Actions-blue?logo=github-actions&logoColor=white)]([https://](https://github.com/features/actions))
+
 
 ## About
 
