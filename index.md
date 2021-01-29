@@ -81,8 +81,8 @@ jobs:
 
 ## Steps
 
-See [Workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/) in my Code Cookbook.
+More to come hear soon! Probably using React.
 
-That covers GH Actions recipes for languages like Python, Ruby, Node, Deno and Go. Plus how to do tasks like build to GH Pages, build a Jekyll site or build and release assets.
+Explore the [Workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/) section in my Code Cookbook. That covers GH Actions recipes for languages like Python, Ruby, Node, Deno and Go. Plus how to do tasks like build to GH Pages, build a Jekyll site or build and release assets.
 
 {% endraw %}
