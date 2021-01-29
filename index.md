@@ -3,6 +3,13 @@
 
 {% raw %}
 
+## Source
+
+Repo: [![MichaelCurrin - workflow-builder](https://img.shields.io/static/v1?label=MichaelCurrin&message=workflow-builder&color=blue&logo=github)](https://github.com/MichaelCurrin/workflow-builder)
+
+Contributions via issues and PRs are welcome.
+
+
 ## Tips
 
 To learn about GH Actions from GitHub's docs, see these [Resources](https://michaelcurrin.github.io/dev-resources/resources/ci-cd/github-actions/).
