@@ -23,22 +23,34 @@ If you want to know available options for a workflow and if you YAML syntax is v
 
 For more options such as building on schedule, see my [Triggers](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/triggers.html) cheatsheet.
 
-### On pushes
+### On a commit push
 
-Commit and push to your main branch or on a Pull Request branch to trigger your workflow.
+Push a local commit or commit using the GitHub UI to trigger these `on` conditions.
 
-- `main.yml`
+- `main.yml` - simplest approach. Build on _any_ branch, regardless of Pull Requests.
+    ```yaml
+    on: push
+    ```
+- `main.yml` - Build on a chose branch only.
+  ```yaml
+    on:
+      push:
+          branches: main
+  ```
+- `main.yml` - Commit and push to your main branch, or a branch with a Pull Request.
     ```yaml
     on:
-    push:
-        branches: main
-        paths-ignore:
-        - 'docs/**'
-    pull_request:
-        branches: main
-        paths-ignore:
-        - 'docs/**'
+      push:
+          branches: main
+          paths-ignore:
+            - 'docs/**'
+      pull_request:
+          branches: main
+          paths-ignore:
+            - 'docs/**'
     ```
+
+The workflow above is setup to not run if there are just changes in your `docs` directory. This is useful to reduce a run that gives no benefit and would still take up processing minutes allocate to your account. If you actually have content in your `docs` directory that matters like for a documentation site, then of course you can remove the ignore parts.
 
 ### On a tag or release
 
@@ -58,6 +70,15 @@ Create a tag or a release to trigger your workflow.
         - 'v*'
     ```
 
+### Manual
+
+Allows you to run this workflow manually from the Actions tab
+
+```yaml
+on:
+  workflow_dispatch:
+```
+
 
 ## Operating systems
 
@@ -71,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
 ```
 
-Run on a matrix of operating systems.
+Run on a matrix of operating systems. Note that quotes not needed for a YAML array.
 
 ```yaml
 jobs:
@@ -97,16 +118,62 @@ That covers:
 
 ### Checkout
 
+Using the [checkout](https://github.com/denolib/setup-deno) actions.
+
 ```yaml
 steps:
-  - uses: actions/checkout@v2
+  - name: Checkout
+    uses: actions/checkout@v2
 ```
 
-### Language-specific steps
+```yaml
+steps:
+  - name: Checkout 🛎️
+    uses: actions/checkout@v2
+    with:
+      persist-credentials: false
+```
+
+### Setup environment
+
+#### Node
+
+[Node CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/node/).
+
+GH Actions comes with Node and Yarn setup already. But you can use an action if you ned more recent version, or to use a matrix of Node or Yarn versions.
+
+Using the [setup-node](https://github.com/actions/setup-node) action.
+
+```yaml
+steps:
+  - name: Setup Node.js
+    uses: actions/setup-node@v2
+    with:
+      node-version: '14.x'
+```
+
+Use a matrix of Node versions.
+
+```yaml
+steps:
+  strategy:
+    matrix:
+      node-version: [10.x, 12.x, 14.x]
+
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+```
 
 #### Deno
 
 [Deno CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deno/).
+
+Using the [setup-deno](https://github.com/denolib/setup-deno) action.
 
 ```yaml
 steps:
@@ -118,6 +185,8 @@ steps:
 #### Go
 
 [Go CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/go/).
+
+Using the [setup-go](https://github.com/actions/setup-go) action.
 
 ```yaml
 steps:
@@ -131,6 +200,8 @@ steps:
 
 [Python CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/python/install-deps.html).
 
+Using the [setup-python](https://github.com/actions/setup-python) action.
+
 ```yaml
 steps:
   - name: Setup Python
@@ -139,11 +210,24 @@ steps:
       python-version: '3.x'
 ```
 
+#### Ruby
+
+Using the [setup-ruby](https://github.com/actions/setup-ruby) action.
+
+```yaml
+steps:
+  - uses: actions/setup-ruby@v1
+    with:
+      ruby-version: '2.7'
+```
+
 ### Install dependencies
 
 This section is not needed for Go or Deno where packages are installed on running, building, testing, etc.
 
 See GH Actions [Cache](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/cache.html) guide.
+
+Using the [cache](https://github.com/actions/cache) action.
 
 #### Python
 
@@ -165,6 +249,70 @@ steps:
     run: |
       python -m pip install --upgrade pip
       pip install -r requirements.txt
+```
+
+#### Node
+
+See related workflows [here](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/node/npm.html).
+
+```yaml
+steps:
+  - name: Cache Node.js modules
+    uses: actions/cache@v2
+    with:
+      path: ~/.npm
+      key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+      restore-keys: |
+        ${{ runner.OS }}-node-
+        ${{ runner.OS }}-
+```
+
+```yaml
+steps:
+  - name: Install dependencies
+    run: npm install
+```
+
+#### Yarn
+
+This uses Yarn's cache directory. On Ubuntu this is `~/.cache/yarn/v6`.
+
+```yaml
+steps:
+  - name: Get yarn cache
+    id: yarn-cache
+    run: echo "::set-output name=dir::$(yarn cache dir)"
+
+  - uses: actions/cache@v1
+    with:
+      path: ${{ steps.yarn-cache.outputs.dir }}
+      key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      restore-keys: |
+        ${{ runner.os }}-yarn-
+```
+
+```yaml
+steps:
+  - name: Install dependencies
+    run: yarn install
+```
+
+### Ruby
+
+```yaml
+steps:
+  - name: Get cached gems
+    uses: actions/cache@v2
+    with:
+      path: vendor/bundle
+      key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+      restore-keys: |
+        ${{ runner.os }}-gems-
+
+  - name: Install gems
+    run: |
+      bundle config set path vendor/bundle
+      bundle install --jobs 4 --retry 3
 ```
 
 
