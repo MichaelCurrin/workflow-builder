@@ -60,17 +60,17 @@ For more options such as building on schedule, see my [Triggers](https://michael
 
 Push a local commit or commit using the GitHub UI to trigger these `on` conditions.
 
-- `main.yml` - simplest approach. Build on _any_ branch, regardless of Pull Requests.
+- `main.yml` - The simplest approach. Builds on _any_ branch, regardless of Pull Requests.
     ```yaml
     on: push
     ```
-- `main.yml` - Build on a chose branch only.
+- `main.yml` - Builds on a chosen branch only.
   ```yaml
     on:
       push:
           branches: main
   ```
-- `main.yml` - Commit and push to your main branch, or a branch with a Pull Request.
+- `main.yml` - Triggered on a commit or push to your main branch or any branch with a Pull Request. Ignores doc changes.
     ```yaml
     on:
       push:
