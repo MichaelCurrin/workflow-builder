@@ -81,8 +81,22 @@ jobs:
 
 ## Steps
 
-More to come hear soon! Probably using React.
+This section covers some common snippets across languages, for some of my common build, test and deploy flows.
 
-Explore the [Workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/) section in my Code Cookbook. That covers GH Actions recipes for languages like Python, Ruby, Node, Deno and Go. Plus how to do tasks like build to GH Pages, build a Jekyll site or build and release assets.
+TODO: I'll add some snippets here soon.
+
+For more details, please explore the [Workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/) section in my Code Cookbook. 
+
+That covers:
+
+- Recipes for languages like Python, Ruby, Node, Deno and Go.
+- How to choose and configure Actions from the Marketplace. 
+- Plus how to do tasks like cache assets, build any app to GH Pages (e.g. React, Vue, Next, MkDocs), build a Jekyll 4 site or to build and release assets.
+
+
+## Future development
+
+After some more content, I'll add interactivity - like using React to control a form and YAML output.
+
 
 {% endraw %}
