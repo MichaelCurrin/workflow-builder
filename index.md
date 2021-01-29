@@ -14,9 +14,13 @@ Contributions via issues, PRs and [Discussions](https://github.com/MichaelCurrin
 
 ## Tips
 
-To learn about GH Actions from GitHub's docs, see these [Resources](https://michaelcurrin.github.io/dev-resources/resources/ci-cd/github-actions/).
-
 If you want to know available options for a workflow and if you YAML syntax is valid, edit your workflow on GitHub rather than in a local file. Click on a field or at an indent level where you want to add a field, the press <kbd>CTRL</kbd>+<kbd>SPACE</kbd>. You'll see available options for that context. This can save reading through the docs.
+
+
+## Resources
+
+- To learn about GH Actions from GitHub's docs, see links in my [Resources](https://michaelcurrin.github.io/dev-resources/resources/ci-cd/github-actions/) list.
+- To understand the workflow syntax with some practical examples, see [GitHub Actions](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/) in my Dev Cheatsheets.
 
 
 ## Name
