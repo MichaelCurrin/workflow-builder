@@ -7,16 +7,20 @@
 [![Made for - GitHub Actions](https://img.shields.io/badge/Made_for-GitHub_Actions-blue?logo=github-actions&logoColor=white)](https://github.com/features/actions)
 
 
-## Preview
-
-[![Sample screenshot](/sample.png "Sample screenshot")](https://michaelcurrin.github.io/workflow-builder/)
-
-
-## Site
+A tool to help you write workflows for GitHub Actions and to learn about common / useful flows and Actions.
 
 <div align="center">
 
-[![View site - GH Pages](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://michaelcurrin.github.io/workflow-builder/)
+[![View site - GH Pages](https://img.shields.io/badge/View_site-Start_building-2ea44f?style=for-the-badge)](https://michaelcurrin.github.io/workflow-builder/)
+
+</div>
+
+
+## Preview
+
+<div align="center">
+
+[![Sample screenshot](/sample.png "Sample screenshot")](https://michaelcurrin.github.io/workflow-builder/)
 
 </div>
 
