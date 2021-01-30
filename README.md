@@ -7,6 +7,20 @@
 [![Made for - GitHub Actions](https://img.shields.io/badge/Made_for-GitHub_Actions-blue?logo=github-actions&logoColor=white)](https://github.com/features/actions)
 
 
+## Preview
+
+[![Sample screenshot](/sample.png "Sample screenshot")](https://michaelcurrin.github.io/workflow-builder/)
+
+
+## Site
+
+<div align="center">
+
+[![View site - GH Pages](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://michaelcurrin.github.io/workflow-builder/)
+
+</div>
+
+
 ## About
 
 I like using GitHub Actions across a lot of my projects. I make notes on syntax, allowed values and some common flows for Node and Python projects. But to make it even easier to create or edit a workflow, I made this project.
