@@ -1,8 +1,8 @@
-# GH Actions Workflow Builder
+# GH Actions Workflow Builder ⚙️ 🏗
 > The quick and easy way to design a GitHub Actions workflow
 
 [![GitHub tag](https://img.shields.io/github/tag/MichaelCurrin/workflow-builder?include_prereleases=&sort=semver)](https://github.com/MichaelCurrin/workflow-builder/releases/)
-[![License - MIT](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 
 [![Made for - GitHub Actions](https://img.shields.io/badge/Made_for-GitHub_Actions-blue?logo=github-actions&logoColor=white)](https://github.com/features/actions)
 
