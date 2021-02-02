@@ -141,7 +141,7 @@ Run on Ubuntu.
 ```yaml
 jobs:
   build:
-    name: Your job name
+    name: Your job's name
 
     runs-on: ubuntu-latest
 ```
@@ -162,6 +162,8 @@ jobs:
 
 This section covers some common snippets across languages, for some of my common build, test and deploy flows.
 
+### Cookbook
+
 For more details, please explore the [Workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/) section in my Code Cookbook.
 
 That covers:
@@ -169,6 +171,38 @@ That covers:
 - Recipes for languages like Python, Ruby, Node, Deno and Go.
 - How to choose and configure Actions from the Marketplace.
 - Plus how to do tasks like cache assets, build any app to GH Pages (e.g. React, Vue, Next, MkDocs), build a Jekyll 4 site or to build and release assets.
+
+### Outline
+
+This is an outline of a generic workflow.
+
+It includes emojis to brighten up the log and make it easier to scan visually. For setup, you might use something related to the language, like a snake for Python.
+
+```yaml
+steps:
+  - name: Checkout 🛎️
+    uses: actions/checkout@master
+
+  - name: Setup Foo ⚙️
+    uses: actions/setup-foo@v2
+    with:
+      foo-version: '1.x'
+
+  - name: Install 🔧
+    run: # ...
+
+  - name: Lint 🧐
+    run: # ...
+
+  - name: Test 🚨
+    run: # ...
+
+  - name: Build 🏗️
+    run: # ...
+
+  - name: Deploy to GH Pages 🚀
+    uses: # ...
+```
 
 ### Checkout
 
@@ -179,7 +213,6 @@ steps:
   - name: Checkout
     uses: actions/checkout@v2
 ```
-
 
 ### Setup environment
 
@@ -243,6 +276,18 @@ steps:
       go-version: 1.15
 ```
 
+#### Rust
+
+Using an action from the [rust-lang/simpleinfra](https://github.com/rust-lang/simpleinfra) repo.
+
+```yaml
+steps:
+  - name: Setup Rust 🦀
+    uses: rust-lang/simpleinfra/github-actions/simple-ci@master
+    with:
+      check_fmt: true
+```
+
 #### Python
 
 [Python CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/python/install-deps.html).
@@ -251,7 +296,7 @@ Using the [setup-python](https://github.com/actions/setup-python) action.
 
 ```yaml
 steps:
-  - name: Setup Python
+  - name: Setup Python 🐍
     uses: actions/setup-python@v2
     with:
       python-version: 3.x
@@ -263,7 +308,8 @@ Using the [setup-ruby](https://github.com/actions/setup-ruby) action.
 
 ```yaml
 steps:
-  - uses: actions/setup-ruby@v1
+  - name: Setup Ruby 💎
+    uses: actions/setup-ruby@v1 
     with:
       ruby-version: 2.7
 ```
@@ -382,7 +428,7 @@ steps:
 For more info and related workflows and actions, see [GH Pages](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deploy-gh-pages/) in my Code Cookbook.
 
 ```yaml
-- name: Deploy 🚀
+- name: Deploy to GH Pages 🚀
   if: ${{ github.event_name != 'pull_request' }}
   uses: peaceiris/actions-gh-pages@v3
   with:
@@ -406,7 +452,6 @@ Here are some workflows I have setup for my projects.
 
 - [GH Pages Deploy](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/main.yml) - workflow to build, test and a deploy a Vue app on GH Pages.
 - [GH Pages Deploy](https://github.com/MichaelCurrin/react-quickstart/blob/master/.github/workflows/main.yml) - same as above but for React.
-
 
 
 {% endraw %}
