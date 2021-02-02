@@ -77,19 +77,19 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
   ```yaml
     on:
       push:
-          branches: main
+        branches: main
   ```
 - `main.yml` - Triggered on a commit or push to your main branch or any branch with a Pull Request. Ignores doc changes.
     ```yaml
     on:
       push:
-          branches: main
-          paths-ignore:
-            - 'docs/**'
+        branches: main
+        paths-ignore:
+          - 'docs/**'
       pull_request:
-          branches: main
-          paths-ignore:
-            - 'docs/**'
+        branches: main
+        paths-ignore:
+          - 'docs/**'
     ```
 
 The workflow above is setup to not run if there are just changes in your `docs` directory. This is useful to reduce a run that gives no benefit and would still take up processing minutes allocate to your account. If you actually have content in your `docs` directory that matters like for a documentation site, then of course you can remove the ignore parts.
@@ -108,8 +108,8 @@ Create a tag or a release to trigger your workflow.
     ```yaml
     on:
     push:
-        tags:
-          - 'v*'
+      tags:
+        - 'v*'
     ```
 
 ### On manual button press
