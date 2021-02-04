@@ -19,11 +19,20 @@ If you want to know available options for a workflow and if you YAML syntax is v
 
 ## Resources
 
-- I wrote two blog posts on GH Actions.
+- I wrote two blog posts on GH Actions:
     - [Beginners guide to GH Actions](https://dev.to/michaelcurrin/beginner-s-guide-to-github-actions-49aa) - overview of features without code snippets.
     - [CI pipeline guide](https://dev.to/michaelcurrin/intro-tutorial-to-ci-cd-with-github-actions-2ba8) - covering Hello World and then a Node app in GH Actions.
 - To learn about GH Actions from GitHub's docs, see links in my [Resources](https://michaelcurrin.github.io/dev-resources/resources/ci-cd/github-actions/) list.
 - To understand the workflow syntax with some practical examples, see [GitHub Actions](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/) in my Dev Cheatsheets.
+
+
+## YAML syntax
+
+- YAML official homepage - [yaml.org/](https://yaml.org/)
+- The recommended style:
+    - For variable names for YAML is dash not underscore. So job name for example should be `build-deploy`.
+    - Quotes are not needed in a lot of cases, even if you have spaces.
+    - If you do use quotes, use double, not single. A formatter in your IDE can take care of this for you.
 
 
 ## Name
@@ -85,11 +94,11 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
       push:
         branches: main
         paths-ignore:
-          - 'docs/**'
+          - "docs/**"
       pull_request:
         branches: main
         paths-ignore:
-          - 'docs/**'
+          - "docs/**"
     ```
 
 The workflow above is setup to not run if there are just changes in your `docs` directory. This is useful to reduce a run that gives no benefit and would still take up processing minutes allocate to your account. If you actually have content in your `docs` directory that matters like for a documentation site, then of course you can remove the ignore parts.
@@ -128,7 +137,7 @@ Run on given cron frequency. Here, daily at midnight.
 ```yaml
 on:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron:  "0 0 * * *"
 ```
 
 This is useful for building a site, deploying an application or publishing to a package registry. Also, if you have any code quality or security scans such as a [CodeQL](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/codeql-analysis.yml) workflow.
