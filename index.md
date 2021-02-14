@@ -190,7 +190,7 @@ It includes emojis to brighten up the log and make it easier to scan visually. F
 ```yaml
 steps:
   - name: Checkout 🛎️
-    uses: actions/checkout@master
+    uses: actions/checkout@v2
 
   - name: Setup Foo ⚙️
     uses: actions/setup-foo@v2
