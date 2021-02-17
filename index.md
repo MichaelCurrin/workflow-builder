@@ -145,17 +145,17 @@ This is useful for building a site, deploying an application or publishing to a 
 
 ## Operating systems
 
-Run on Ubuntu.
+Run on Ubuntu. This is the most common flow.
 
 ```yaml
 jobs:
   build:
-    name: Your job's name
+    name: Build
 
     runs-on: ubuntu-latest
 ```
 
-Run on a matrix of operating systems. Note that quotes not needed for a YAML array.
+Run on a matrix of operating systems.
 
 ```yaml
 jobs:
@@ -165,6 +165,10 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
       runs-on: ${{ matrix.os }}
 ```
+
+This seems to be case-insensitive as some people use `macos-latest`.
+
+Note that quotes are not needed in YAML, whether for a string or array of strings.
 
 
 ## Steps
