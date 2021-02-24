@@ -95,10 +95,13 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
         branches: main
         paths-ignore:
           - "docs/**"
+          - README.md
+
       pull_request:
         branches: main
         paths-ignore:
           - "docs/**"
+          - README.md
     ```
 
 The workflow above is setup to not run if there are just changes in your `docs` directory. This is useful to reduce a run that gives no benefit and would still take up processing minutes allocate to your account. If you actually have content in your `docs` directory that matters like for a documentation site, then of course you can remove the ignore parts.
