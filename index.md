@@ -6,7 +6,7 @@
 ## About
 
 - A tool to help you build your own CI workflow.
-- You don't have to go through pages and pages of documentation on GH Actions, skipping over syntax or Actions you don't care about. This guide focuses on the areas you are most likely to use in a certain context. Already neatly configured and explained. 
+- You don't have to go through pages and pages of documentation on GH Actions, skipping over syntax or Actions you don't care about. This guide focuses on the areas you are most likely to use in a certain context. Such as building a static site, or doing linting and building for a Node or Python app. Already neatly configured and explained. 
 - Pick and choose from the pieces below that are relevant for you and add them to your workflow file. Like a build your own meal.
 - Details are provided as a cheatsheet / tutorial, so you can learn about functionality and advanced settings.
 - The snippets here aim to be simple, clean and easy to read and write. Relying on external Actions as dependencies only when appropriate.
