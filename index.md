@@ -1,15 +1,24 @@
 # **GH Actions Workflow Builder**
 > The quick and easy way to design a GitHub Actions workflow
 
+[![Made for GH Actions](https://img.shields.io/badge/Made_for-GitHub_Actions-blue?logo=github-actions&logoColor=white&style=for-the-badge)](https://github.com/features/actions)
+
+## About
+
+- A tool to help you build your own CI workflow.
+- You don't have to go through pages and pages of documentation on GH Actions, skipping over syntax or Actions you don't care about. This guide focuses on the areas you are most likely to use in a certain context. Already neatly configured and explained. 
+- Pick and choose from the pieces below that are relevant for you and add them to your workflow file. Like a build your own meal.
+- Details are provided as a cheatsheet / tutorial, so you can learn about functionality and advanced settings.
+- The snippets here aim to be simple, clean and easy to read and write. Relying on external Actions as dependencies only when appropriate.
+
+
 {% raw %}
 
-## Source
+## Source code
 
-Repo:
+- [![MichaelCurrin - workflow-builder](https://img.shields.io/static/v1?label=MichaelCurrin&message=workflow-builder&color=blue&logo=github)](https://github.com/MichaelCurrin/workflow-builder)
 
-[![MichaelCurrin - workflow-builder](https://img.shields.io/static/v1?label=MichaelCurrin&message=workflow-builder&color=blue&logo=github)](https://github.com/MichaelCurrin/workflow-builder)
-
-Contributions via issues, PRs and [Discussions](https://github.com/MichaelCurrin/workflow-builder/discussions) are welcome.
+Contributions are welcome via issues, PRs and [Discussions](https://github.com/MichaelCurrin/workflow-builder/discussions).
 
 
 ## Tips
