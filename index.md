@@ -97,7 +97,20 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
       push:
         branches: main
   ```
-- `main.yml` - Triggered on a commit or push to your main branch or any branch with a Pull Request. Ignores doc changes.
+- `main.yml` - Triggered on a commit or push to your main branch or any branch with a Pull Request. Ignore changes to markdown files (docs).
+    ```yaml
+    on:
+      push:
+        branches: main
+        paths-ignore:
+          - "**.md"
+
+      pull_request:
+        branches: main
+        paths-ignore:
+          - "**.md"
+    ```
+- `main.yml` - Similar to above but still watches for changes in markdown files outside the `docs` directory. Such as if you have a static site with markdown content in the root of the repo.
     ```yaml
     on:
       push:
