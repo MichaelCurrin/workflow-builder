@@ -97,7 +97,7 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
       push:
         branches: main
   ```
-- `main.yml` - Triggered on a commit or push to your main branch or any branch with a Pull Request. Ignore changes to markdown files (docs).
+- `main.yml` - Triggered on a commit or push to your main branch or any branch with a Pull Request. Ignore changes to markdown files (docs). Note that anything in `docs` directory that is not markdown (such as an image or YAML) will still trigger a deploy.
     ```yaml
     on:
       push:
