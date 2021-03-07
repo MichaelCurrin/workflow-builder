@@ -102,7 +102,7 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
       push:
         branches: main
   ```
-- `main.yml` - Triggered on a commit or push to your main branch or any branch with a Pull Request. Ignore changes to markdown files (docs). Note that anything in `docs` directory that is not markdown (such as an image or YAML) will still trigger a deploy.
+- `main.yml` - Triggered on a commit or push to your main branch or any branch with a Pull Request. Ignore changes to markdown files (like docs) at _all_ levels (I've tested and this rule works without using `**/*.md`. Note that anything in `docs` directory that is not markdown (such as an image or YAML) will still trigger a deploy.
     ```yaml
     on:
       push:
@@ -115,7 +115,7 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
         paths-ignore:
           - "**.md"
     ```
-- `main.yml` - Similar to above but still watches for changes in markdown files outside the `docs` directory. Such as if you have a static site with markdown content in the root of the repo.
+- `main.yml` - Similar to above but still watches for changes in markdown files outside the `docs` directory. Such as if you have a static site with markdown content in the root of the repo. It might be sufficient to just do `docs/`.
     ```yaml
     on:
       push:
