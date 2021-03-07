@@ -372,24 +372,21 @@ This section is not needed for Go or Deno where packages are installed on runnin
 
 See GH Actions [Cache](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/cache.html) guide.
 
-Using the [cache](https://github.com/actions/cache) action.
+Load dependencies from the cache, if the dependencies file is unchanged. The cache part is optional but makes the build faster.
 
 #### Python
 
 ```yaml
 steps:
-  - name: Cache dependencies
+  - name: Get cached Python packages
     uses: actions/cache@v2
     with:
       path: ~/.cache/pip
-      key: ${{ runner.os }}-pip-${{ hashFiles('docs/requirements.txt') }}
+      key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
       restore-keys: |
         ${{ runner.os }}-pip-
         ${{ runner.os }}-
-```
-
-```yaml
-steps:
+  
   - name: Install dependencies
     run: |
       python -m pip install --upgrade pip
@@ -402,7 +399,7 @@ See related workflows [here](https://michaelcurrin.github.io/code-cookbook/recip
 
 ```yaml
 steps:
-  - name: Cache Node.js modules
+  - name: Get cached NPM packages
     uses: actions/cache@v2
     with:
       path: ~/.npm
@@ -410,10 +407,7 @@ steps:
       restore-keys: |
         ${{ runner.OS }}-node-
         ${{ runner.OS }}-
-```
 
-```yaml
-steps:
   - name: Install dependencies
     run: npm install
 ```
@@ -434,10 +428,7 @@ steps:
       key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       restore-keys: |
         ${{ runner.os }}-yarn-
-```
 
-```yaml
-steps:
   - name: Install dependencies
     run: yarn install
 ```
@@ -454,7 +445,7 @@ steps:
       restore-keys: |
         ${{ runner.os }}-gems-
 
-  - name: Install gems
+  - name: Install dependencies
     run: |
       bundle config set path vendor/bundle
       bundle install --jobs 4 --retry 3
