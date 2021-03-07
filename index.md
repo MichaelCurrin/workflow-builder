@@ -3,13 +3,9 @@
 
 {% raw %}
 
-<div align="center">
-  
 [![Made for GH Actions](https://img.shields.io/badge/Made_for-GitHub_Actions-blue?logo=github-actions&logoColor=white&style=for-the-badge)](https://github.com/features/actions)
 
 [![MichaelCurrin - workflow-builder](https://img.shields.io/static/v1?label=MichaelCurrin&message=workflow-builder&color=blue&logo=githubstyle=for-the-badge)](https://github.com/MichaelCurrin/workflow-builder)
-
-</div>
 
 
 ## About
