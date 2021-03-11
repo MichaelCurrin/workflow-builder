@@ -19,9 +19,9 @@ A tool to help you write workflows for GitHub Actions and to learn about common 
 ## Preview
 
 <div align="center">
-
-[![Sample screenshot](/sample.png "Sample screenshot")](https://michaelcurrin.github.io/workflow-builder/)
-
+    <a href="https://michaelcurrin.github.io/workflow-builder/">
+        <img src="/sample.png" alt="Sample screenshot" title="Sample screenshot" width="400" />
+    </a>
 </div>
 
 
