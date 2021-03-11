@@ -418,7 +418,7 @@ This uses Yarn's cache directory. On Ubuntu this is `~/.cache/yarn/v6`.
 
 ```yaml
 steps:
-  - name: Get yarn cache
+  - name: Get Yarn cache
     id: yarn-cache
     run: echo "::set-output name=dir::$(yarn cache dir)"
 
@@ -429,26 +429,21 @@ steps:
       restore-keys: |
         ${{ runner.os }}-yarn-
 
-  - name: Install dependencies
+  - name: Install dependencies 🔧
     run: yarn install
 ```
 
 ### Ruby
 
+This will setup Ruby, install gems with Bundler and also cache the gems.
+
 ```yaml
 steps:
-  - name: Get cached gems
-    uses: actions/cache@v2
+  - name: Setup Ruby 💎
+    uses: actions/setup-ruby@v1
     with:
-      path: vendor/bundle
-      key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-      restore-keys: |
-        ${{ runner.os }}-gems-
-
-  - name: Install dependencies
-    run: |
-      bundle config set path vendor/bundle
-      bundle install --jobs 4 --retry 3
+      ruby-version: '2.7'
+      bundler-cache: true
 ```
 
 
