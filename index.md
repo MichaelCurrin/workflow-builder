@@ -387,20 +387,6 @@ steps:
       ruby-version: 2.7
 ```
 
-#### Jekyll
-
-```yaml
-steps:
-  - name: Build Jekyll site
-    run: |
-      docker run \
-        -v $:/srv/jekyll \
-        -v $/_site:/srv/jekyll/_site \
-        jekyll/builder:4 \
-        /bin/bash -c 'chmod 777 /srv/jekyll && jekyll build --future'
-```
-
-
 ### Install dependencies
 
 This section is not needed for Go or Deno where packages are installed on running, building, testing, etc.
@@ -432,6 +418,8 @@ steps:
 
 See related workflows [here](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/node/npm.html).
 
+For NPM projects.
+
 ```yaml
 steps:
   - name: Get cached NPM packages
@@ -447,7 +435,7 @@ steps:
     run: npm install
 ```
 
-#### Yarn
+For Yarn projects.
 
 This uses Yarn's cache directory. On Ubuntu this is `~/.cache/yarn/v6`.
 
@@ -481,8 +469,79 @@ steps:
       bundler-cache: true
 ```
 
+This setup works for Jekyll projects too. Just make sure you add `jekyll` gem to `Gemfile`.
 
-## GitHub Pages
+#### Jekyll
+
+This will:
+
+1. Setup a container with Ruby and Jekyll 4 installed.
+2. Install any dependencies in `Gemfile`.
+3. Build the site to `_site` directory.
+
+```yaml
+steps:
+  - name: Build Jekyll site
+    run: |
+      docker run \
+        -v $:/srv/jekyll \
+        -v $/_site:/srv/jekyll/_site \
+        jekyll/builder:4 \
+        /bin/bash -c 'chmod 777 /srv/jekyll && jekyll build --future'
+```
+
+If you want to **persist** the `_site` directory output to serve as a GH Pages site, see the [GitHub Pages](#github-pages) section.
+
+
+## Build
+> Create your production build output
+
+Bundle your package or app so it can be installed, or build your website assets.
+
+### Make
+
+This depends on setting up `Makefile` with a `build` target.
+
+```yaml
+steps:
+  - name: Build 🏗️
+    run: make build
+```
+
+### Node
+
+```yaml
+steps:
+  - name: Build 🏗️
+    run: npm run build
+```
+
+```yaml
+steps:
+  - name: Build 🏗️
+    run: yarn build
+```
+
+### Jekyll
+
+After setting up Ruby and installing dependencies with Bundler.
+
+Build the site with Jekyll.
+
+```yaml
+steps:
+  - name: Build 🏗️
+    run: bundle exec jekyll build --trace
+```
+
+If you want to **persist** the `_site` directory output to serve as a GH Pages site, see the [GitHub Pages](#github-pages) section.
+
+
+## Deploy
+
+### GitHub Pages
+
+This action will take a given build output directory (like `dist`, `build` or `_site`) and commit it as a single commit on the `gh-pages` branch at the root path. This can then be served as static assets (HTML, CSS and JS) on a GH Pages site.
 
 For more info and related workflows and actions, see [GH Pages](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deploy-gh-pages/) in my Code Cookbook.
 
@@ -495,9 +554,9 @@ For more info and related workflows and actions, see [GH Pages](https://michaelc
     publish_dir: _site
 ```
 
-Sequence:
+Steps:
 
-1. To deploy your application, first run the build command for Jekyll or your Node app (e.g. React, Vue or Next.js).
+1. Run your build command. This could be anything - such using Jekyll, MkdDocs, or `npm run build` (for React, Vue or Next.js).
 2. Then setup this action to point to that directory e.g. in `_site` or `build`.
 3. The action will copy the content root of the `gh-pages` branch (this it is default behavior).
 4. When that commit is pushed, then your GH Pages site will reload, using the latest content.
