@@ -31,6 +31,8 @@ I like using GitHub Actions across a lot of my projects. I make notes on syntax,
 
 The aim is not to cover all features in GH Actions, but rather to cover the parts that are relevant for my own projects.
 
+This site is built on Jekyll, but that might change. To keep things light, there are not files for local dev, like a config or Gemfile.
+
 
 ## License
 
