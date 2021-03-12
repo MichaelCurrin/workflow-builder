@@ -6,11 +6,46 @@
 [![MichaelCurrin - workflow-builder](https://img.shields.io/static/v1?label=MichaelCurrin&message=workflow-builder&color=blue&logo=github&style=for-the-badge)](https://github.com/MichaelCurrin/workflow-builder)
 [![Made for GH Actions](https://img.shields.io/badge/Made_for-GitHub_Actions-blue?logo=github-actions&logoColor=white&style=for-the-badge)](https://github.com/features/actions)
 
+<!-- Note - for now this is deliberately a one-page site - the external sites handle nesting. This page is intended to be a SPA or at least use CSS/JS to filter to relevant sections. For now use TOC here, maybe sidebar in future.  -->
+
+**Table of contents**
+
+- [About](#about)
+- [Contributing](#contributing)
+- [Tips](#tips)
+- [Resources](#resources)
+- [YAML syntax](#yaml-syntax)
+- [Name](#name)
+- [Triggers](#triggers)
+  - [On a commit push](#on-a-commit-push)
+  - [On a tag or release](#on-a-tag-or-release)
+  - [On manual button press](#on-manual-button-press)
+  - [On a schedule](#on-a-schedule)
+- [Operating systems](#operating-systems)
+- [Steps](#steps)
+  - [Cookbook](#cookbook)
+  - [Outline](#outline)
+  - [Checkout](#checkout)
+  - [Setup environment](#setup-environment)
+    - [Node](#node)
+    - [Deno](#deno)
+    - [Go](#go)
+    - [Rust](#rust)
+    - [Python](#python)
+    - [Ruby](#ruby)
+    - [Jekyll](#jekyll)
+  - [Install dependencies](#install-dependencies)
+    - [Python](#python-1)
+    - [Node](#node-1)
+    - [Yarn](#yarn)
+  - [Ruby](#ruby-1)
+- [GitHub Pages](#github-pages)
+- [Workflows out in the world](#workflows-out-in-the-world)
 
 ## About
 
 - A tool to help you build your own CI workflow.
-- You don't have to go through pages and pages of documentation on GH Actions, skipping over syntax or Actions you don't care about. This guide focuses on the areas you are most likely to use in a certain context. Such as building a static site, or doing linting and building for a Node or Python app. Already neatly configured and explained. 
+- You don't have to go through pages and pages of documentation on GH Actions, skipping over syntax or Actions you don't care about. This guide focuses on the areas you are most likely to use in a certain context. Such as building a static site, or doing linting and building for a Node or Python app. Already neatly configured and explained.
 - Pick and choose from the pieces below that are relevant for you and add them to your workflow file. Like a build your own meal.
 - Details are provided as a cheatsheet / tutorial, so you can learn about functionality and advanced settings.
 - The snippets here aim to be simple, clean and easy to read and write. Relying on external Actions as dependencies only when appropriate.
@@ -347,7 +382,7 @@ Using the [setup-ruby](https://github.com/actions/setup-ruby) action.
 ```yaml
 steps:
   - name: Setup Ruby 💎
-    uses: actions/setup-ruby@v1 
+    uses: actions/setup-ruby@v1
     with:
       ruby-version: 2.7
 ```
@@ -386,7 +421,7 @@ steps:
       restore-keys: |
         ${{ runner.os }}-pip-
         ${{ runner.os }}-
-  
+
   - name: Install dependencies
     run: |
       python -m pip install --upgrade pip
