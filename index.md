@@ -516,19 +516,21 @@ This setup works for Jekyll projects too. Just make sure you add `jekyll` gem to
 
 #### Jekyll
 
-This will:
+[CI sample workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/jekyll/)
+
+The workflow below will:
 
 1. Setup a container with Ruby and Jekyll 4 installed.
-2. Install any dependencies in `Gemfile`.
-3. Build the site to `_site` directory.
+2. Install any dependencies from `Gemfile` using Bundler.
+3. Build the site to the `_site` directory.
 
 ```yaml
 steps:
   - name: Build Jekyll site
     run: |
       docker run \
-        -v $:/srv/jekyll \
-        -v $/_site:/srv/jekyll/_site \
+        -v ${{ github.workspace }}:/srv/jekyll \
+        -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:4 \
         /bin/bash -c 'chmod 777 /srv/jekyll && jekyll build --future'
 ```
