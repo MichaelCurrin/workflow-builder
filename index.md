@@ -203,7 +203,37 @@ on:
 This is useful for building a site, deploying an application or publishing to a package registry. Also, if you have any code quality or security scans such as a [CodeQL](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/codeql-analysis.yml) workflow.
 
 
-## Operating systems
+## Job setup
+
+### Name
+
+Give a job a name using a key under `jobs` and a pretty name under `name` field.
+
+The job name might be similar to the workflow file's name at the top, but I find it better to be more specific. Like "Node CI" for the workflow and "Build and deploy" as a job name.
+
+Some samples:
+
+```yaml
+jobs:
+  build:
+    name: Build
+```
+  
+```yaml
+jobs:
+  build-test:
+    name: Build and test
+```
+
+```yaml
+jobs:
+  build-deploy:
+    name: Build and deploy
+```
+
+### Operating systems
+
+Define the operating system for a job.
 
 Run on Ubuntu. This is the most common flow.
 
@@ -230,10 +260,23 @@ This seems to be case-insensitive as some people use `macos-latest`.
 
 Note that quotes are not needed in YAML, whether for a string or array of strings.
 
+### Environment variables
+
+```yaml
+env:
+  VAR_A: Hello
+  
+jobs:
+  build:
+    env:
+      VAR_B: World
+```
+
 
 ## Steps
+> Define steps for a job to run
 
-This section covers some common snippets across languages, for some of my common build, test and deploy flows.
+This section covers some common snippets across languages, for some of my common flows that build, test and deploy.
 
 ### Cookbook
 
