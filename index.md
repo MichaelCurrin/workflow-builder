@@ -42,6 +42,7 @@
 - [GitHub Pages](#github-pages)
 - [Workflows out in the world](#workflows-out-in-the-world)
 
+
 ## About
 
 - A tool to help you build your own CI workflow.
@@ -326,7 +327,7 @@ Using the [checkout](https://github.com/actions/checkout) action.
 
 ```yaml
 steps:
-  - name: Checkout
+  - name: Checkout 🛎️
     uses: actions/checkout@v2
 ```
 
