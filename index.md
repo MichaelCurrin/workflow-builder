@@ -502,39 +502,28 @@ steps:
 
 ### Ruby
 
-This will setup Ruby, install gems with Bundler and also cache the gems.
+This will setup Ruby in the environment, install gems with Bundler and even cache the gems for faster builds.
 
 ```yaml
 steps:
   - name: Setup Ruby 💎
-    uses: actions/setup-ruby@v1
+    uses: ruby/setup-ruby@v1
     with:
       ruby-version: '2.7'
       bundler-cache: true
 ```
 
-This setup works for Jekyll projects too. Just make sure you add `jekyll` gem to `Gemfile`.
-
-#### Jekyll
-
-[CI sample workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/jekyll/)
-
-The workflow below will:
-
-1. Setup a container with Ruby and Jekyll 4 installed.
-2. Install any dependencies from `Gemfile` using Bundler.
-3. Build the site to the `_site` directory.
+This setup can work for Jekyll projects too. Just make sure you add `jekyll` gem to `Gemfile` and add a build step:
 
 ```yaml
 steps:
-  - name: Build Jekyll site
-    run: |
-      docker run \
-        -v ${{ github.workspace }}:/srv/jekyll \
-        -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:4 \
-        /bin/bash -c 'chmod 777 /srv/jekyll && jekyll build --future'
+  # ...
+  
+  - name: Build 🏗
+    run: bundle exec jekyll build --trace
 ```
+
+See more samples and info in my [Jekyll CI](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/jekyll/) recipes.
 
 If you want to **persist** the `_site` directory output to serve as a GH Pages site, see the [GitHub Pages](#github-pages) section.
 
