@@ -131,7 +131,7 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
           - README.md
     ```
 
-The workflow above is setup to not run if there are just changes in your `docs` directory. This is useful to reduce a run that gives no benefit and would still take up processing minutes allocate to your account. If you actually have content in your `docs` directory that matters like for a documentation site, then of course you can remove the ignore parts.
+The workflow above is set up to not run if there are just changes in your `docs` directory. This is useful to reduce a run that gives no benefit and would still take up processing minutes allocate to your account. If you actually have content in your `docs` directory that matters like for a documentation site, then of course you can remove the ignore parts.
 
 ### On a tag or release
 
@@ -188,7 +188,7 @@ jobs:
   build:
     name: Build
 ```
-  
+
 ```yaml
 jobs:
   build-test:
@@ -235,7 +235,7 @@ Note that quotes are not needed in YAML, whether for a string or array of string
 ```yaml
 env:
   VAR_A: Hello
-  
+
 jobs:
   build:
     env:
@@ -247,6 +247,8 @@ jobs:
 > Define steps for a job to run
 
 This section covers some common snippets across languages, for some of my common flows that build, test and deploy.
+
+A note on wording - "setup" is a noun, while "set up" is a verb. See both under [setup](https://www.merriam-webster.com/dictionary/setup) on the Merriam-Webster online dictionary.
 
 ### Cookbook
 
@@ -262,14 +264,14 @@ That covers:
 
 This is an outline of a generic workflow.
 
-It includes emojis to brighten up the log and make it easier to scan visually. For setup, you might use something related to the language, like a snake for Python.
+It includes emojis to brighten up the log and make it easier to scan visually. For set up, you might use something related to the language, like a snake for Python.
 
 ```yaml
 steps:
   - name: Checkout 🛎️
     uses: actions/checkout@v2
 
-  - name: Setup Foo ⚙️
+  - name: Set up Foo ⚙️
     uses: actions/setup-foo@v2
     with:
       foo-version: '1.x'
@@ -300,19 +302,19 @@ steps:
     uses: actions/checkout@v2
 ```
 
-### Setup environment
+### Set up environment
 
 #### Node
 
 [Node CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/node/).
 
-GH Actions comes with Node and Yarn setup already. But you can use an action if you ned more recent version, or to use a matrix of Node or Yarn versions.
+GH Actions comes with Node and Yarn set up already. But you can use an action if you ned more recent version, or to use a matrix of Node or Yarn versions.
 
 Using the [setup-node](https://github.com/actions/setup-node) action.
 
 ```yaml
 steps:
-  - name: Setup Node.js
+  - name: Set up Node.js
     uses: actions/setup-node@v2
     with:
       node-version: '14.x'
@@ -368,7 +370,7 @@ Using an action from the [rust-lang/simpleinfra](https://github.com/rust-lang/si
 
 ```yaml
 steps:
-  - name: Setup Rust 🦀
+  - name: Set up Rust 🦀
     uses: rust-lang/simpleinfra/github-actions/simple-ci@master
     with:
       check_fmt: true
@@ -382,7 +384,7 @@ Using the [setup-python](https://github.com/actions/setup-python) action.
 
 ```yaml
 steps:
-  - name: Setup Python 🐍
+  - name: Set up Python 🐍
     uses: actions/setup-python@v2
     with:
       python-version: 3.x
@@ -394,7 +396,7 @@ Using the [setup-ruby](https://github.com/actions/setup-ruby) action.
 
 ```yaml
 steps:
-  - name: Setup Ruby 💎
+  - name: Set up Ruby 💎
     uses: actions/setup-ruby@v1
     with:
       ruby-version: 2.7
@@ -475,8 +477,8 @@ This will setup Ruby in the environment, install gems with Bundler and even cach
 
 ```yaml
 steps:
-  - name: Setup Ruby 💎
-    uses: ruby/setup-ruby@v1
+  - name: Set up Ruby 💎
+    uses: actions/setup-ruby@v1
     with:
       ruby-version: '2.7'
       bundler-cache: true
@@ -484,10 +486,18 @@ steps:
 
 This setup can work for Jekyll projects too. Just make sure you add `jekyll` gem to `Gemfile` and add a build step:
 
+#### Jekyll
+
+This will:
+
+1. Set up a container with Ruby and Jekyll 4 installed.
+2. Install any dependencies in `Gemfile`.
+3. Build the site to `_site` directory.
+
 ```yaml
 steps:
   # ...
-  
+
   - name: Build 🏗
     run: bundle exec jekyll build --trace
 ```
@@ -561,7 +571,7 @@ For more info and related workflows and actions, see [GH Pages](https://michaelc
 Steps:
 
 1. Run your build command. This could be anything - such using Jekyll, MkdDocs, or `npm run build` (for React, Vue or Next.js).
-2. Then setup this action to point to that directory e.g. in `_site` or `build`.
+2. Then set up this action to point to that directory e.g. in `_site` or `build`.
 3. The action will copy the content root of the `gh-pages` branch (this it is default behavior).
 4. When that commit is pushed, then your GH Pages site will reload, using the latest content.
 
@@ -570,7 +580,7 @@ Note the use of the `if` condition on this step. This means that your entire wor
 
 ## Workflows out in the world
 
-Here are some workflows I have setup for my projects.
+Here are some workflows I have set up for my projects.
 
 - [GH Pages Deploy](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/main.yml) - workflow to build, test and a deploy a Vue app on GH Pages.
 - [GH Pages Deploy](https://github.com/MichaelCurrin/react-quickstart/blob/master/.github/workflows/main.yml) - same as above but for React.
