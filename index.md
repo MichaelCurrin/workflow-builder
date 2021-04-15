@@ -10,37 +10,6 @@
 
 **Table of contents**
 
-- [About](#about)
-- [Contributing](#contributing)
-- [Tips](#tips)
-- [Resources](#resources)
-- [YAML syntax](#yaml-syntax)
-- [Name](#name)
-- [Triggers](#triggers)
-  - [On a commit push](#on-a-commit-push)
-  - [On a tag or release](#on-a-tag-or-release)
-  - [On manual button press](#on-manual-button-press)
-  - [On a schedule](#on-a-schedule)
-- [Operating systems](#operating-systems)
-- [Steps](#steps)
-  - [Cookbook](#cookbook)
-  - [Outline](#outline)
-  - [Checkout](#checkout)
-  - [Setup environment](#setup-environment)
-    - [Node](#node)
-    - [Deno](#deno)
-    - [Go](#go)
-    - [Rust](#rust)
-    - [Python](#python)
-    - [Ruby](#ruby)
-    - [Jekyll](#jekyll)
-  - [Install dependencies](#install-dependencies)
-    - [Python](#python-1)
-    - [Node](#node-1)
-    - [Yarn](#yarn)
-  - [Ruby](#ruby-1)
-- [GitHub Pages](#github-pages)
-- [Workflows out in the world](#workflows-out-in-the-world)
 
 
 ## About
