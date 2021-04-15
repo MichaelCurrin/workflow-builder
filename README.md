@@ -34,6 +34,15 @@ The aim is not to cover all features in GH Actions, but rather to cover the part
 This site is built on Jekyll, but that might change. To keep things light, there are not files for local dev, like a config or Gemfile.
 
 
+## Development
+
+This site is built on Jekyll static generator and hosted with GitHub Pages.
+
+It just a one-page site that is not intended to be run locally, so there are no Jekyll configs.
+
+To deploy your copy of this site, enable _GitHub Pages_ under _Setting_ of your repo.
+
+
 ## License
 
 Released under [MIT](/LICENSE) by [@MichaelCurrin](https://github.com/MichaelCurrin).
