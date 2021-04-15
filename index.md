@@ -520,27 +520,19 @@ steps:
       bundler-cache: true
 ```
 
-This setup can work for Jekyll projects too. Just make sure you add `jekyll` gem to `Gemfile` and add a build step:
-
-#### Jekyll
-
-This will:
-
-1. Set up a container with Ruby and Jekyll 4 installed.
-2. Install any dependencies in `Gemfile`.
-3. Build the site to `_site` directory.
+This Ruby setup flow works great for Jekyll projects too. Just make sure to add `jekyll` gem to your `Gemfile` and add a build step as below.
 
 ```yaml
 steps:
-  # ...
-
   - name: Build 🏗
     run: bundle exec jekyll build --trace
 ```
 
-See more samples and info in my [Jekyll CI](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/jekyll/) recipes.
+Then your workflow will set up Ruby and Jekyll then build `_site` directory.
 
 If you want to **persist** the `_site` directory output to serve as a GH Pages site, see the [GitHub Pages](#github-pages) section.
+
+See more Jekyll samples and info in my [Jekyll CI](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/jekyll/) recipes.
 
 
 ## Build
