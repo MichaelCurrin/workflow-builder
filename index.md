@@ -381,7 +381,8 @@ Using the [setup-deno](https://github.com/denolib/setup-deno) action.
 
 ```yaml
 steps:
-  - uses: denolib/setup-deno@v2
+  - name: Set up Deno
+    uses: denolib/setup-deno@v2
     with:
     deno-version: v1.x
 ```
@@ -459,7 +460,7 @@ steps:
         ${{ runner.os }}-pip-
         ${{ runner.os }}-
 
-  - name: Install dependencies
+  - name: Install dependencies 🔧
     run: |
       python -m pip install --upgrade pip
       pip install -r requirements.txt
@@ -482,7 +483,7 @@ steps:
         ${{ runner.OS }}-node-
         ${{ runner.OS }}-
 
-  - name: Install dependencies
+  - name: Install dependencies 🔧
     run: npm install
 ```
 
