@@ -151,7 +151,7 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
         paths-ignore:
           - "*.md"
     ```
-- `main.yml` - Similar to above but still watches for changes in markdown files outside the `docs` directory. Such as if you have a static site with markdown content in the root of the repo. It might be sufficient to just do `docs/`.
+- `main.yml` - Similar to above but still watches for changes in markdown files outside the `docs` directory. Such as if you have a static site with markdown content in the root of the repo. If you have a directory within `docs/`, you need the double globalstar as below - I found `docs/` was not sufficient as a rule.
     ```yaml
     on:
       push:
@@ -167,7 +167,7 @@ Push a local commit or commit using the GitHub UI to trigger these `on` conditio
           - README.md
     ```
 
-The workflow above is set up to not run if there are just changes in your `docs` directory. This is useful to reduce a run that gives no benefit and would still take up processing minutes allocate to your account. If you actually have content in your `docs` directory that matters like for a documentation site, then of course you can remove the ignore parts.
+The workflow above has been set up to not run if there are just changes in your `docs` directory. This is useful to reduce a run that gives no benefit and would still take up processing minutes allocate to your account. If you actually have content in your `docs` directory that matters like for a documentation site, then of course you can remove the ignore parts.
 
 ### On a tag or release
 
