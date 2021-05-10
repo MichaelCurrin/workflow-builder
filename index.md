@@ -307,12 +307,15 @@ steps:
   - name: Checkout 🛎️
     uses: actions/checkout@v2
 
-  - name: Set up Foo ⚙️
+  - name: Set up Foo ⚙️  # e.g. Python, Node or Ruby
     uses: actions/setup-foo@v2
     with:
       foo-version: '1.x'
 
-  - name: Install 🔧
+  - name: Install dependencies 🔧
+    run: # ...
+    
+  - name: Check formatting 🧐
     run: # ...
 
   - name: Lint 🧐
@@ -324,7 +327,7 @@ steps:
   - name: Build 🏗️
     run: # ...
 
-  - name: Deploy to GH Pages 🚀
+  - name: Deploy to GitHub Pages 🚀
     uses: # ...
 ```
 
