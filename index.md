@@ -315,7 +315,7 @@ steps:
   - name: Install dependencies 🔧
     run: # ...
     
-  - name: Check formatting 🧐
+  - name: Check formatting 🎨
     run: # ...
 
   - name: Lint 🧐
