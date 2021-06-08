@@ -111,7 +111,7 @@ name: Python CI
 name: Deno CI
 ```
 ```yaml
-name: GH Pages Deploy
+name: Deploy GH Pages 
 ```
 ```yaml
 name: Release
