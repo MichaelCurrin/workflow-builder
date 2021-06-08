@@ -597,7 +597,7 @@ This action will take a given build output directory (like `dist`, `build` or `_
 For more info and related workflows and actions, see [GH Pages](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deploy-gh-pages/) in my Code Cookbook.
 
 ```yaml
-- name: Deploy GitHub Pages 🚀
+- name: Deploy to GitHub Pages 🚀
   if: ${{ github.event_name != 'pull_request' }}
   uses: peaceiris/actions-gh-pages@v3
   with:
