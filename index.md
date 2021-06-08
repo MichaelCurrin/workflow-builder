@@ -307,11 +307,16 @@ steps:
   - name: Checkout 🛎️
     uses: actions/checkout@v2
 
-  - name: Set up Foo ⚙️  # e.g. Python, Node or Ruby
+  - name: Set up Foo ⚙️  # e.g. Python 🐍, Node or Ruby 💎
     uses: actions/setup-foo@v2
     with:
       foo-version: '1.x'
 
+  - name: Cache dependencies 💾
+    uses: actions/cache@v2
+    with:
+      # ...
+    
   - name: Install dependencies 🔧
     run: # ...
     
@@ -353,7 +358,7 @@ Using the [setup-node](https://github.com/actions/setup-node) action.
 
 ```yaml
 steps:
-  - name: Set up Node.js
+  - name: Set up Node.js ⚙️
     uses: actions/setup-node@v2
     with:
       node-version: '14.x'
@@ -368,9 +373,10 @@ steps:
       node-version: [10.x, 12.x, 14.x]
 
   steps:
-    - uses: actions/checkout@v2
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ matrix.node-version }} ⚙️
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
@@ -384,7 +390,7 @@ Using the [setup-deno](https://github.com/denolib/setup-deno) action.
 
 ```yaml
 steps:
-  - name: Set up Deno
+  - name: Set up Deno ⚙️ 🦕
     uses: denolib/setup-deno@v2
     with:
     deno-version: v1.x
@@ -398,7 +404,7 @@ Using the [setup-go](https://github.com/actions/setup-go) action.
 
 ```yaml
 steps:
-  - name: Set up Go
+  - name: Set up Go ⚙️ ⏩
     uses: actions/setup-go@v2
     with:
       go-version: 1.15
@@ -410,7 +416,7 @@ Using an action from the [rust-lang/simpleinfra](https://github.com/rust-lang/si
 
 ```yaml
 steps:
-  - name: Set up Rust 🦀
+  - name: Set up Rust ⚙️ 🦀
     uses: rust-lang/simpleinfra/github-actions/simple-ci@master
     with:
       check_fmt: true
@@ -424,7 +430,7 @@ Using the [setup-python](https://github.com/actions/setup-python) action.
 
 ```yaml
 steps:
-  - name: Set up Python 🐍
+  - name: Set up Python ⚙️ 🐍
     uses: actions/setup-python@v2
     with:
       python-version: 3.x
@@ -436,7 +442,7 @@ Using the [setup-ruby](https://github.com/actions/setup-ruby) action.
 
 ```yaml
 steps:
-  - name: Set up Ruby 💎
+  - name: Set up Ruby ⚙️ 💎
     uses: actions/setup-ruby@v1
     with:
       ruby-version: 2.7
@@ -448,13 +454,13 @@ This section is not needed for Go or Deno where packages are installed on runnin
 
 See GH Actions [Cache](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/cache.html) guide.
 
-Load dependencies from the cache, if the dependencies file is unchanged. The cache part is optional but makes the build faster.
+ The cache step is optional but makes the build faster. It will load dependencies from the cache, if the dependencies file is unchanged. Also adds a clean-up step for you to save dependencies to the cache.
 
 #### Python
 
 ```yaml
 steps:
-  - name: Get cached Python packages
+  - name: Cache Python packages 💾
     uses: actions/cache@v2
     with:
       path: ~/.cache/pip
@@ -477,7 +483,7 @@ For NPM projects.
 
 ```yaml
 steps:
-  - name: Get cached NPM packages
+  - name: Cache NPM packages 💾
     uses: actions/cache@v2
     with:
       path: ~/.npm
@@ -496,11 +502,11 @@ This uses Yarn's cache directory. On Ubuntu this is `~/.cache/yarn/v6`.
 
 ```yaml
 steps:
-  - name: Get Yarn cache
+  - name: Get Yarn cache dir 💾
     id: yarn-cache
     run: echo "::set-output name=dir::$(yarn cache dir)"
 
-  - uses: actions/cache@v1
+  - uses: actions/cache@v1 💾
     with:
       path: ${{ steps.yarn-cache.outputs.dir }}
       key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -592,7 +598,7 @@ This action will take a given build output directory (like `dist`, `build` or `_
 For more info and related workflows and actions, see [GH Pages](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deploy-gh-pages/) in my Code Cookbook.
 
 ```yaml
-- name: Deploy to GH Pages 🚀
+- name: Deploy to GitHub Pages 🚀
   if: ${{ github.event_name != 'pull_request' }}
   uses: peaceiris/actions-gh-pages@v3
   with:
@@ -616,6 +622,5 @@ Here are some workflows I have set up for my projects.
 
 - [GH Pages Deploy](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/main.yml) - workflow to build, test and a deploy a Vue app on GH Pages.
 - [GH Pages Deploy](https://github.com/MichaelCurrin/react-quickstart/blob/master/.github/workflows/main.yml) - same as above but for React.
-
 
 {% endraw %}
