@@ -1,3 +1,4 @@
+# This file exists just for testing how workflows work.
 name: CI
 
 on:
@@ -9,4 +10,4 @@ jobs:
 
     steps:
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: echo "Hello, World!"
