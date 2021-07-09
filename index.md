@@ -203,7 +203,9 @@ on:
 
 ### On a schedule
 
-Run on given cron frequency. Here, daily at midnight.
+Run on a given frequency, using [Crontab](https://crontab.com) notation.
+
+Daily at midnight:
 
 ```yaml
 on:
