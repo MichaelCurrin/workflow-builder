@@ -6,7 +6,11 @@
 [![MichaelCurrin - workflow-builder](https://img.shields.io/static/v1?label=MichaelCurrin&message=workflow-builder&color=blue&logo=github&style=for-the-badge)](https://github.com/MichaelCurrin/workflow-builder)
 [![Made for GH Actions](https://img.shields.io/badge/Made_for-GitHub_Actions-blue?logo=github-actions&logoColor=white&style=for-the-badge)](https://github.com/features/actions)
 
-<!-- Note - for now this is deliberately a one-page site - the external sites handle nesting. This page is intended to be a SPA or at least use CSS/JS to filter to relevant sections. For now use TOC here, maybe sidebar in future.  -->
+<!--
+  Note - for now this is deliberately a one-page site - the external sites handle nesting.
+  This page is intended to be a SPA or at least use CSS/JS to filter to relevant sections.
+  For now use TOC here, maybe sidebar in future.
+-->
 
 **Table of contents**
 
@@ -21,7 +25,10 @@
   - [On a tag or release](#on-a-tag-or-release)
   - [On manual button press](#on-manual-button-press)
   - [On a schedule](#on-a-schedule)
-- [Operating systems](#operating-systems)
+- [Job setup](#job-setup)
+  - [Name](#name-1)
+  - [Operating systems](#operating-systems)
+  - [Environment variables](#environment-variables)
 - [Steps](#steps)
   - [Cookbook](#cookbook)
   - [Outline](#outline)
@@ -37,11 +44,10 @@
     - [Python](#python-1)
     - [Node](#node-1)
   - [Ruby](#ruby-1)
-    - [Jekyll](#jekyll)
 - [Build](#build)
   - [Make](#make)
   - [Node](#node-2)
-  - [Jekyll](#jekyll-1)
+  - [Jekyll](#jekyll)
 - [Deploy](#deploy)
   - [GitHub Pages](#github-pages)
 - [Workflows out in the world](#workflows-out-in-the-world)
@@ -110,7 +116,7 @@ name: Python CI
 name: Deno CI
 ```
 ```yaml
-name: Deploy GH Pages 
+name: Deploy GH Pages
 ```
 ```yaml
 name: Release
@@ -315,10 +321,10 @@ steps:
     uses: actions/cache@v2
     with:
       # ...
-    
+
   - name: Install dependencies 🔧
     run: # ...
-    
+
   - name: Check formatting 🎨
     run: # ...
 
