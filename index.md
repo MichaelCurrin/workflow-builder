@@ -655,6 +655,8 @@ Here are some workflows I have set up for my projects which I'd like to share.
 - Badge Generator [GH Pages Deploy](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/main.yml) - a workflow to build, test and a deploy a Vue app as a GitHub Pages site.
 - React Quickstart [GH Pages Deploy](https://github.com/MichaelCurrin/react-quickstart/blob/master/.github/workflows/main.yml) - same as above, but for React.
 - Jekyl GH Actions Quickstart [GH Pages Deploy](https://github.com/MichaelCurrin/jekyll-gh-actions-quickstart/blob/main/.github/workflows/main.yml) - using GH Actions in order to support Jekyll 4, rather than the standard Jekyll 3.
-- [Auto Commit Message [Node CI](https://github.com/MichaelCurrin/auto-commit-msg/blob/master/.github/workflows/main.yml) to build a VS Code extension. Including caching of Node packages for faster builds,lint and format checks, TypeScript compilation, and tests.
+- Auto Commit Message [Node CI](https://github.com/MichaelCurrin/auto-commit-msg/blob/master/.github/workflows/main.yml) to build a VS Code extension. Including caching of Node packages for faster builds,lint and format checks, TypeScript compilation, and tests.
+- Go Project Template [Go CI](https://github.com/MichaelCurrin/go-project-template/blob/main/.github/workflows/main.yml) - test and build a Go app.
+- MkDocs Quickstart [Deploy Docs](https://github.com/MichaelCurrin/mkdocs-quickstart/blob/master/.github/workflows/docs.yml) - build a docs site and deploy to GH Pages.
 
 {% endraw %}
