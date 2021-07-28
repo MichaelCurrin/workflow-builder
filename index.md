@@ -64,8 +64,7 @@
 
 ## Contributing
 
-Contributions are welcome via issues, PRs and [Discussions](https://github.com/MichaelCurrin/workflow-builder/discussions).
-
+See [Contributing](https://github.com/MichaelCurrin/workflow-builder/blob/main/CONTRIBUTING.md) guide.
 
 ## Tips
 
@@ -125,9 +124,11 @@ name: Release
 
 ## Triggers
 
-For more options such as building on schedule, see my [Triggers](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/triggers.html) cheatsheet.
+For more options such as building on schedule, see my [Triggers][] cheatsheet.
 
 You can combine the sections below - for example, you can run a task on pushes `main`, on a nightly schedule and also whenever you press the run button (without having to make a commit).
+
+[Triggers]: https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/triggers.html
 
 ### On a commit push
 
@@ -203,7 +204,7 @@ on:
 
 ### On a schedule
 
-Run on a given frequency, using [Crontab](https://crontab.com) notation.
+Run on a given frequency, using [Crontab][] notation.
 
 Daily at midnight:
 
@@ -213,7 +214,10 @@ on:
     - cron:  "0 0 * * *"
 ```
 
-This is useful for building a site, deploying an application or publishing to a package registry. Also, if you have any code quality or security scans such as a [CodeQL](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/codeql-analysis.yml) workflow.
+This is useful for building a site, deploying an application or publishing to a package registry. Also, if you have any code quality or security scans such as a [CodeQL][] workflow.
+
+[Crontab]: https://crontab.com
+[CodeQL]: https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/codeql-analysis.yml
 
 
 ## Job setup
@@ -291,17 +295,21 @@ jobs:
 
 This section covers some common snippets across languages, for some of my common flows that build, test and deploy.
 
-A note on wording - "setup" is a noun, while "set up" is a verb. See both under [setup](https://www.merriam-webster.com/dictionary/setup) on the Merriam-Webster online dictionary.
+A note on wording - "setup" is a noun, while "set up" is a verb. See both under the [setup definition][] on the Merriam-Webster online dictionary.
+
+[setup definition]: https://www.merriam-webster.com/dictionary/setup
 
 ### Cookbook
 
-For more details, please explore the [Workflows](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/) section in my Code Cookbook.
+For more details, please explore the [Workflows][] section in my Code Cookbook.
 
 That covers:
 
 - Recipes for languages like Python, Ruby, Node, Deno and Go.
 - How to choose and configure Actions from the Marketplace.
 - Plus how to do tasks like cache assets, build any app to GH Pages (e.g. React, Vue, Next, MkDocs), build a Jekyll 4 site or to build and release assets.
+
+[Workflows]: https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/
 
 ### Outline
 
@@ -361,7 +369,7 @@ steps:
 
 GH Actions comes with Node and Yarn set up already. But you can use an action if you ned more recent version, or to use a matrix of Node or Yarn versions.
 
-Using the [setup-node](https://github.com/actions/setup-node) action.
+Using the [setup-node][] action.
 
 ```yaml
 steps:
@@ -389,11 +397,13 @@ steps:
         node-version: ${{ matrix.node-version }}
 ```
 
+[setup-node]: https://github.com/actions/setup-node
+
 #### Deno
 
 [Deno CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deno/).
 
-Using the [setup-deno](https://github.com/denolib/setup-deno) action.
+Using the [setup-deno][] action.
 
 ```yaml
 steps:
@@ -403,11 +413,13 @@ steps:
     deno-version: v1.x
 ```
 
+[setup-deno]: https://github.com/denolib/setup-deno
+
 #### Go
 
 [Go CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/go/).
 
-Using the [setup-go](https://github.com/actions/setup-go) action.
+Using the [setup-go][] action.
 
 ```yaml
 steps:
@@ -416,6 +428,8 @@ steps:
     with:
       go-version: 1.15
 ```
+
+[setup-go]: https://github.com/actions/setup-go
 
 #### Rust
 
@@ -433,7 +447,7 @@ steps:
 
 [Python CI samples](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/python/install-deps.html).
 
-Using the [setup-python](https://github.com/actions/setup-python) action.
+Using the [setup-python]() action.
 
 ```yaml
 steps:
@@ -443,9 +457,11 @@ steps:
       python-version: 3.x
 ```
 
+[setup-python]: https://github.com/actions/setup-python
+
 #### Ruby
 
-Using the [setup-ruby](https://github.com/actions/setup-ruby) action.
+Using the [setup-ruby][] action.
 
 ```yaml
 steps:
@@ -455,13 +471,17 @@ steps:
       ruby-version: 2.7
 ```
 
+[setup-ruby]: https://github.com/actions/setup-ruby
+
 ### Install dependencies
 
 This section is not needed for Go or Deno where packages are installed on running, building, testing, etc.
 
-See GH Actions [Cache](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/cache.html) guide.
+See GH Actions [Cache][] guide.
 
  The cache step is optional but makes the build faster. It will load dependencies from the cache, if the dependencies file is unchanged. Also adds a clean-up step for you to save dependencies to the cache.
+
+[Cache]: https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/cache.html
 
 #### Python
 
@@ -486,7 +506,7 @@ steps:
 
 See related workflows [here](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/node/npm.html).
 
-For NPM projects.
+For NPM projects:
 
 ```yaml
 steps:
@@ -503,9 +523,7 @@ steps:
     run: npm install
 ```
 
-For Yarn projects.
-
-This uses Yarn's cache directory. On Ubuntu this is `~/.cache/yarn/v6`.
+For Yarn projects:
 
 ```yaml
 steps:
@@ -523,6 +541,9 @@ steps:
   - name: Install dependencies 🔧
     run: yarn install
 ```
+
+This uses Yarn's cache directory. On Ubuntu this is `~/.cache/yarn/v6`.
+
 
 ### Ruby
 
@@ -549,7 +570,9 @@ Then your workflow will set up Ruby and Jekyll then build `_site` directory.
 
 If you want to **persist** the `_site` directory output to serve as a GH Pages site, see the [GitHub Pages](#github-pages) section.
 
-See more Jekyll samples and info in my [Jekyll CI](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/jekyll/) recipes.
+See more Jekyll samples and info in my [Jekyll CI][] recipes.
+
+[Jekyll CI]: https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/jekyll/
 
 
 ## Build
@@ -602,7 +625,7 @@ If you want to **persist** the `_site` directory output to serve as a GH Pages s
 
 This action will take a given build output directory (like `dist`, `build` or `_site`) and commit it as a single commit on the `gh-pages` branch at the root path. This can then be served as static assets (HTML, CSS and JS) on a GH Pages site.
 
-For more info and related workflows and actions, see [GH Pages](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deploy-gh-pages/) in my Code Cookbook.
+For more info and related workflows and actions, see [GH Pages][] in my Code Cookbook.
 
 ```yaml
 - name: Deploy to GitHub Pages 🚀
@@ -622,12 +645,16 @@ Steps:
 
 Note the use of the `if` condition on this step. This means that your entire workflow can run on a push to your main branch. But on a push to a Pull Request branch, the earlier build steps will run but the deploy step at the end will be skipped. This is useful to avoid deploy your work in progress branch to your production site.
 
+[GH Pages]: https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deploy-gh-pages/
+
 
 ## Workflows out in the world
 
-Here are some workflows I have set up for my projects.
+Here are some workflows I have set up for my projects which I'd like to share.
 
-- [GH Pages Deploy](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/main.yml) - workflow to build, test and a deploy a Vue app on GH Pages.
-- [GH Pages Deploy](https://github.com/MichaelCurrin/react-quickstart/blob/master/.github/workflows/main.yml) - same as above but for React.
+- Badge Generator [GH Pages Deploy](https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/main.yml) - a workflow to build, test and a deploy a Vue app as a GitHub Pages site.
+- React Quickstart [GH Pages Deploy](https://github.com/MichaelCurrin/react-quickstart/blob/master/.github/workflows/main.yml) - same as above, but for React.
+- Jekyl GH Actions Quickstart [GH Pages Deploy](https://github.com/MichaelCurrin/jekyll-gh-actions-quickstart/blob/main/.github/workflows/main.yml) - using GH Actions in order to support Jekyll 4, rather than the standard Jekyll 3.
+- [Auto Commit Message [Node CI](https://github.com/MichaelCurrin/auto-commit-msg/blob/master/.github/workflows/main.yml) to build a VS Code extension. Including caching of Node packages for faster builds,lint and format checks, TypeScript compilation, and tests.
 
 {% endraw %}
