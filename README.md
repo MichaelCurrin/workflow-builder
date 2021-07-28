@@ -9,19 +9,18 @@
 
 A tool to help you write workflows for GitHub Actions and to learn about common / useful flows and Actions.
 
-<div align="center">
-
-[![View site - GH Pages](https://img.shields.io/badge/View_site-Workflow_Builder-2ea44f?style=for-the-badge)](https://michaelcurrin.github.io/workflow-builder/)
-
-</div>
-
 
 ## Preview
 
 <div align="center">
     <a href="https://michaelcurrin.github.io/workflow-builder/">
-        <img src="/sample.png" alt="Sample screenshot" title="Sample screenshot" width="500" />
+        <img src="/sample.png" alt="Sample screenshot" title="Sample screenshot" width="450" />
     </a>
+    
+<br>
+
+[![View site - GH Pages](https://img.shields.io/badge/View_site-Workflow_Builder-2ea44f?style=for-the-badge)](https://michaelcurrin.github.io/workflow-builder/)
+
 </div>
 
 
@@ -40,7 +39,7 @@ This site is built on Jekyll static generator and hosted with GitHub Pages.
 
 It just a one-page site that is not intended to be run locally, so there are no Jekyll configs.
 
-To deploy your copy of this site, enable _GitHub Pages_ under _Setting_ of your repo.
+To deploy your copy of this site, enable _GitHub Pages_ under _Settings_ of your repo.
 
 
 ## License
