@@ -14,10 +14,12 @@ A tool to help you write workflows for GitHub Actions and to learn about common 
 ## Preview
 
 <div align="center">
-    <a href="https://michaelcurrin.github.io/workflow-builder/">
-        <img src="/sample.png" alt="Sample screenshot" title="Sample screenshot" width="450" />
-    </a>
     
+<a href="https://michaelcurrin.github.io/workflow-builder/">
+    <img src="/sample.png" alt="Sample screenshot" title="Sample screenshot" width="450" />
+</a>
+
+<br>
 <br>
 
 [![View site - GH Pages](https://img.shields.io/badge/View_site-Workflow_Builder-2ea44f?style=for-the-badge)](https://michaelcurrin.github.io/workflow-builder/)
