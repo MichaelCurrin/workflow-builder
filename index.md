@@ -188,9 +188,9 @@ Create a tag or a release to trigger your workflow.
 - `tag.yml`
     ```yaml
     on:
-    push:
-      tags:
-        - 'v*'
+      push:
+        tags:
+          - 'v*'
     ```
 
 ### On manual button press
