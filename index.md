@@ -195,12 +195,38 @@ Create a tag or a release to trigger your workflow.
 
 ### On manual button press
 
-Allows you to run this workflow manually from the Actions tab.
+Add this to your workflow.
+
+This allows you to run this workflow manually by a button pressed in the Actions tab.
+
+#### Simple
+
+No arguments.
+
+```yaml
+on: workflow_dispatch
+```
+
+### Parametrized
+
+Here the job expects to inputs.
 
 ```yaml
 on:
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
 ```
+
+See [Workflow dispatch](https://michaelcurrin.github.io/dev-cheatsheets/cheatsheets/ci-cd/github-actions/triggers.html#workflow-dispatch) in my Dev Cheatsheets for more info.
 
 ### On a schedule
 
