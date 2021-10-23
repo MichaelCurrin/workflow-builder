@@ -278,7 +278,7 @@ jobs:
 
 Define the operating system for a job.
 
-Run on Ubuntu. This is the most common flow.
+Run on Ubuntu - this is the most common flow:
 
 ```yaml
 jobs:
@@ -288,7 +288,7 @@ jobs:
     runs-on: ubuntu-latest
 ```
 
-Run on a matrix of operating systems.
+Run on a matrix of operating systems - useful if you need to test your app can install and run on all.
 
 ```yaml
 jobs:
@@ -299,9 +299,14 @@ jobs:
       runs-on: ${{ matrix.os }}
 ```
 
-This seems to be case-insensitive as some people use `macos-latest`.
 
 Note that quotes are not needed in YAML, whether for a string or array of strings.
+
+You can also pin like `ubunutu-18.04`.
+
+For a list of available systems, see [GitHub Hosted Runners][] in the docs.
+
+[GitHub Hosted Runners]: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
 
 ### Environment variables
 
