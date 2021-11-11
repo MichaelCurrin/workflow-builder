@@ -242,7 +242,7 @@ on:
 
 This is useful for building a site, deploying an application or publishing to a package registry. Also, if you have any code quality or security scans such as a [CodeQL][] workflow.
 
-[Crontab]: https://crontab.com
+[Crontab]: https://crontab.guru/
 [CodeQL]: https://github.com/MichaelCurrin/badge-generator/blob/master/.github/workflows/codeql-analysis.yml
 
 
