@@ -670,13 +670,19 @@ For more info and related workflows and actions, see [GH Pages][] in my Code Coo
 Steps:
 
 1. Run your build command. This could be anything - such using Jekyll, MkdDocs, or `npm run build` (for React, Vue or Next.js).
-2. Then set up this action to point to that directory e.g. in `_site` or `build`.
-3. The action will copy the content root of the `gh-pages` branch (this it is default behavior).
-4. When that commit is pushed, then your GH Pages site will reload, using the latest content.
+1. Then set up this action to point to that directory e.g. in `_site` or `build`.
+1. The action will copy the content root of the `gh-pages` branch (this it is default behavior).
+1. When that commit is pushed, then your GH Pages site will reload, using the latest content.
 
 Note the use of the `if` condition on this step. This means that your entire workflow can run on a push to your main branch. But on a push to a Pull Request branch, the earlier build steps will run but the deploy step at the end will be skipped. This is useful to avoid deploy your work in progress branch to your production site.
 
 [GH Pages]: https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/deploy-gh-pages/
+
+
+## Commits and Pull Requests
+
+- [Commit](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/commit.html)
+- [Create Pull Request](https://michaelcurrin.github.io/code-cookbook/recipes/ci-cd/github-actions/workflows/create-pull-request.html)
 
 
 ## Workflows out in the world
