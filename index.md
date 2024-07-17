@@ -464,14 +464,16 @@ steps:
 
 #### Rust
 
-Using an action from the [rust-lang/simpleinfra](https://github.com/rust-lang/simpleinfra) repo.
-
 ```yaml
 steps:
-  - name: Set up Rust ⚙️ 🦀
-    uses: rust-lang/simpleinfra/github-actions/simple-ci@master
-    with:
-      check_fmt: true
+  - name: Install rustfmt
+    run: rustup component add rustfmt
+  - name: Check formatting
+    run: cargo fmt --all --check
+  - name: Build
+    run: cargo build --tests --workspace
+  - name: Test
+    run: cargo test --workspace
 ```
 
 #### Python
